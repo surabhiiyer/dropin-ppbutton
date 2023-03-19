@@ -16,11 +16,17 @@ block content
         .bt-drop-in-wrapper
           #bt-dropin
 
+        <div id="paypal-button"></div>
+
       input#nonce(type="hidden" name="payment_method_nonce")
       button.button(type="submit")
         span Test Transaction
 
   span(hidden id="client-token")=clientToken
 
+  script(src="https://www.paypal.com/sdk/js?client-id=Abe1r6doZa2hY3_lCAE65OfZLH-HDLHIJPu3o_Lfbs4IzDzfzSdwANsCqj_c0TbCtVel0aMoB9X46tNp")
   script(src="https://js.braintreegateway.com/web/dropin/1.36.0/js/dropin.min.js")
+  script(src="https://js.braintreegateway.com/web/3.91.0/js/client.min.js")
+  script(src="https://js.braintreegateway.com/web/3.91.0/js/paypal-checkout.min.js")
+
   script(type="text/javascript", src="/javascript/demo.js")

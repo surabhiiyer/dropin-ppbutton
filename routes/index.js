@@ -57,7 +57,10 @@ router.get('/checkouts/new', (req, res) => {
       clientToken,
       messages: req.flash('error'),
     });
-  });
+
+    //console.log('client token - ', clientToken);
+
+});
 });
 
 router.get('/checkouts/:id', (req, res) => {
