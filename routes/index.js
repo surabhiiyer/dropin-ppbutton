@@ -81,7 +81,9 @@ router.post('/checkouts', (req, res) => {
     .sale({
       amount,
       paymentMethodNonce,
-      options: { submitForSettlement: true },
+     // paymentMethodNonce: "fake-venmo-account-paymentMethodNonce",
+      options: { submitForSettlement: true //storeInVaultOnSucces: true  
+      },
     })
     .then((result) => {
       const { success, transaction } = result;
