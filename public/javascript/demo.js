@@ -41,7 +41,8 @@
     }, function (paypalCheckoutErr, paypalCheckoutInstance) {
       paypalCheckoutInstance.loadPayPalSDK({
         currency: 'USD',
-        intent: 'capture'
+        vault: true 
+        //intent: 'capture'
       }, function () {
         var FUNDING_SOURCES = [
           paypal.FUNDING.PAYPAL,
@@ -55,13 +56,15 @@
   //FUNDING_SOURCES.forEach(function(fundingSource) {
   // Initialize the buttons
   var button = paypal.Buttons({
-          //fundingSource: 'venmo', //'fundingSource',
-          createOrder: function () {
+          //fundingSource: paypal.FUNDING.PAYPAL, //  
+          createBillingAgreement: function () {
             return paypalCheckoutInstance.createPayment({
               flow: 'checkout', // Required
-              amount: 10.00, // Required
-              currency: 'USD', // Required, must match the currency passed in with loadPayPalSDK
-              intent: 'capture', // Must match the intent passed in with loadPayPalSDK
+              requestBillingAgreement: true, 
+              currency: 'USD',
+              amount: '10.00',
+              // The following are optional params
+              billingAgreementDescription: 'Your agreement description',
               enableShippingAddress: true,
               shippingAddressEditable: false,
               shippingAddressOverride: {
@@ -76,6 +79,7 @@
               }
             });
           },
+
 
           onApprove: function (data, actions) {
             return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
