@@ -56,7 +56,7 @@
   //FUNDING_SOURCES.forEach(function(fundingSource) {
   // Initialize the buttons
   var button = paypal.Buttons({
-          //fundingSource: paypal.FUNDING.PAYPAL, //  
+          //fundingSource: paypal.FUNDING.PAYPAL, //  by default you should be able to see all available funding options.
           createBillingAgreement: function () {
             return paypalCheckoutInstance.createPayment({
               flow: 'checkout', // Required
